@@ -1,0 +1,17 @@
+from tkinter import *
+
+top = Tk()
+top.title("Testing")
+top.geometry('500x500')
+top.resizable(0,0)
+frame = Frame(top,bd=10)
+frame.place(x=30,y=0)
+B = Button(frame,text="button 1")
+B2 = Button(frame,text="button 2")
+B3 = Button(frame,text="button 3")
+B4 = Button(frame,text="button 4")
+B4.pack(side=LEFT)
+B.pack(side=LEFT)
+B2.pack(side=LEFT)
+B3.pack(side=LEFT)
+top.mainloop()
