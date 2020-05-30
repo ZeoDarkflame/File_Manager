@@ -6,9 +6,12 @@ class MainWin():    #this class manages the Main Window
 
     def __init__(self):
         self.tk = tk.Tk()
+        #set Background White
         self.tk.config(bg='white')
         self.tk.title("File Manager")
+        #set Size Constant
         self.tk.geometry('1000x500')
+        #set Resizable False
         self.tk.resizable(0,0)
         self.header = tk.Frame(self.tk,borderwidth=1,relief=tk.RAISED,bg='white')
         self.header.pack(side=tk.TOP,fill=tk.BOTH)
@@ -24,12 +27,12 @@ class MainWin():    #this class manages the Main Window
         self.leftlab.pack()
         self.texframe = tk.Frame(self.tk,padx = 10,pady = 10,bg='white')
         self.texframe.pack(side=tk.LEFT,fill=tk.BOTH)
-        self.lablist = []
-        self.varlist = []
+        self.lablist = []           #these lists hold the labels and text in labels for dynamically
+        self.varlist = []           #filling the main text area
 
         
     
         
-if __name__ == "__main__":
+if __name__ == "__main__":          #demo the main window if this file is opened directly
     win = MainWin()
     win.tk.mainloop()
