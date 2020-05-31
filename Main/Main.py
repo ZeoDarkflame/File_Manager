@@ -7,6 +7,8 @@ def thispressed(event): #change the label to blue when clicked
     for i in win.lablist:
         i.config(bg = 'white', fg = 'black')
     event.widget.config(bg = 'blue',fg="white")
+    win.pressed = win.varlist[win.lablist.index(event.widget)].get()
+    win.copybutton.config(relief=tk.RAISED)
 
 def chngdir(event): #change the directory when clicking on a folder
     dir = win.varlist[win.lablist.index(event.widget)].get()
