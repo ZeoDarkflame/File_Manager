@@ -4,10 +4,10 @@ import os
 import subprocess as sub
 
 def Callback( ):
-    print(str(src_var) + "  " +str(des_var))
-    s2 = sub.run("ls",shell = True)
-    s1 = sub.run(["cp" , str(src_var) , str(des_var)])
-    print("debug")
+    print(str(src_var.get()) + "  " +str(des_var.get()))
+    #s2 = sub.run("ls",shell = True)
+    #s1 = sub.run(["cp" , str(src_var) , str(des_var)])
+    #print("debug")
 
 
 
