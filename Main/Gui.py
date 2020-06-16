@@ -49,8 +49,9 @@ class MainWin():    #this class manages the Main Window
         #self.texframe.pack(side=tk.LEFT,fill=tk.BOTH)
         self.lablist = []           #these lists hold the labels and text in labels for dynamically
         self.varlist = []           #filling the main text area
+        self.isdir = []             #keeping track of directories and files
         self.emptylabs = []         #to hold the empty labels
-        self.pressed = ''
+        self.pressed = None
 
     def oncopybuttonpressed(self):
         global copywindowopened
