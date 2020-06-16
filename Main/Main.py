@@ -5,6 +5,10 @@ import os
 optionsframe = None
 options = []
 emptylabels_to_make = 5
+options_not_selected_bg = 'gray88'
+options_not_selected_fg = 'black'
+options_selected_bg = 'blue'
+options_selected_fg = 'white'
 
 def thispressed(event): #change the label to blue when clicked
     for i in win.lablist:
@@ -15,8 +19,8 @@ def thispressed(event): #change the label to blue when clicked
 
 def optionhover(event):
     for i in options:
-        i.config(bg='gray82',fg='black')
-    event.widget.config(bg='blue',fg='white')
+        i.config(bg=options_not_selected_bg,fg=options_not_selected_fg)
+    event.widget.config(bg=options_selected_bg,fg=options_selected_fg)
 
 def rightclicked(event):
     global optionsframe
@@ -25,15 +29,15 @@ def rightclicked(event):
         optionsframe = tk.Frame(win.texframe)
         optionsframe.place(x=event.x,y= 21 * win.lablist.index(event.widget) + event.y)
         event.widget.update()
-        option1 = tk.Button(optionsframe,text="Copy",relief = tk.FLAT,bg='gray82')
+        option1 = tk.Button(optionsframe,text="Copy",relief = tk.FLAT,bg='gray88')
         option1.pack(side = tk.TOP,fill=tk.X)
         options.append(option1)
         option1.bind('<Motion>',optionhover)
-        option2 = tk.Button(optionsframe,text="Cut",relief = tk.FLAT,bg='gray82')
+        option2 = tk.Button(optionsframe,text="Cut",relief = tk.FLAT,bg='gray88')
         option2.pack(side = tk.TOP,fill=tk.X)
         options.append(option2)
         option2.bind('<Motion>',optionhover)
-        option3 = tk.Button(optionsframe,text="Paste",relief = tk.FLAT,bg='gray82')
+        option3 = tk.Button(optionsframe,text="Paste",relief = tk.FLAT,bg='gray88')
         option3.pack(side = tk.TOP,fill=tk.X)
         options.append(option3)
         option3.bind('<Motion>',optionhover)
