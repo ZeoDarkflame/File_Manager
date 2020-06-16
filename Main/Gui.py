@@ -33,10 +33,23 @@ class MainWin():    #this class manages the Main Window
         self.left.pack(side=tk.LEFT,fill=tk.BOTH)       #frame on left
         self.copybutton = tk.Button(self.left,text='Copy',relief = tk.FLAT,bg='white',width=20,pady=3,command = self.oncopybuttonpressed)
         self.copybutton.pack(side=tk.TOP,pady=5,padx=5)
-        self.texframe = tk.Frame(self.tk,padx = 10,pady = 10,bg='white')    #frame on center
-        self.texframe.pack(side=tk.LEFT,fill=tk.BOTH)
+        #adding test stuff <
+        self.texframeparent = tk.Frame(self.tk,padx=10,pady=10,bg='white')
+        self.texframeparent.pack(side=tk.RIGHT,fill=tk.BOTH)
+        self.texframecanvas = tk.Canvas(self.texframeparent,bg='white')
+        self.texframe = tk.Frame(self.texframecanvas,bg='white')    #frame on center
+        self.scroller = tk.Scrollbar(self.texframeparent,orient='vertical',command=self.texframecanvas.yview)
+        self.scroller.pack(side=tk.RIGHT,fill=tk.Y)
+        self.texframecanvas.configure(yscrollcommand = self.scroller.set)
+        self.texframecanvas.pack(side=tk.LEFT,fill=tk.BOTH)
+        self.texframecanvas.create_window((0,0),window=self.texframe,anchor='nw')
+        self.texframe.bind('<Configure>',lambda a : self.texframecanvas.configure(scrollregion=self.texframecanvas.bbox("all"),width = 1000))
+        #/> added test stuff
+
+        #self.texframe.pack(side=tk.LEFT,fill=tk.BOTH)
         self.lablist = []           #these lists hold the labels and text in labels for dynamically
         self.varlist = []           #filling the main text area
+        self.emptylabs = []         #to hold the empty labels
         self.pressed = ''
 
     def oncopybuttonpressed(self):
