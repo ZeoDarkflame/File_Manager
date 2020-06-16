@@ -3,13 +3,20 @@ import subprocess
 import tkinter as tk
 import os
 optionsframe = None
-emptylabels_to_make = 2
+options = []
+emptylabels_to_make = 5
+
 def thispressed(event): #change the label to blue when clicked
     for i in win.lablist:
         i.config(bg = 'white', fg = 'black')
     event.widget.config(bg = 'blue',fg="white")
     win.pressed = win.varlist[win.lablist.index(event.widget)].get()
     win.copybutton.config(relief=tk.RAISED)
+
+def optionhover(event):
+    for i in options:
+        i.config(bg='gray82',fg='black')
+    event.widget.config(bg='blue',fg='white')
 
 def rightclicked(event):
     global optionsframe
@@ -18,12 +25,21 @@ def rightclicked(event):
         optionsframe = tk.Frame(win.texframe)
         optionsframe.place(x=event.x,y= 21 * win.lablist.index(event.widget) + event.y)
         event.widget.update()
-        auxbutton = tk.Button(optionsframe,text="Testing",relief = tk.FLAT)
-        auxbutton.pack(side = tk.TOP)
-        auxbutton2 = tk.Button(optionsframe,text="Testing 2",relief = tk.FLAT)
-        auxbutton2.pack(side = tk.TOP)
+        option1 = tk.Button(optionsframe,text="Copy",relief = tk.FLAT,bg='gray82')
+        option1.pack(side = tk.TOP,fill=tk.X)
+        options.append(option1)
+        option1.bind('<Motion>',optionhover)
+        option2 = tk.Button(optionsframe,text="Cut",relief = tk.FLAT,bg='gray82')
+        option2.pack(side = tk.TOP,fill=tk.X)
+        options.append(option2)
+        option2.bind('<Motion>',optionhover)
+        option3 = tk.Button(optionsframe,text="Paste",relief = tk.FLAT,bg='gray82')
+        option3.pack(side = tk.TOP,fill=tk.X)
+        options.append(option3)
+        option3.bind('<Motion>',optionhover)
     else:
         optionsframe.destroy()
+        options.clear()
         optionsframe = None
         rightclicked(event)
 
@@ -31,6 +47,7 @@ def clearprompts(event):
     global optionsframe
     try:
         optionsframe.destroy()
+        options.clear()
         optionsframe = None
     except:
         pass
