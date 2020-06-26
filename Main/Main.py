@@ -49,17 +49,17 @@ def onpaste():
             os.system('xcopy ' + '"' +  dirinmemory  + '" "' + str(os.getcwd()) + '\\' + inmemory + '"' + ' /e /i /h /c' )
         else:
             os.system('copy ' + '"' + dirinmemory + '" "' + str(os.getcwd()) + '"')
-            print('isdir is false')
-            print('copy ' + '"' + dirinmemory + '" ".\\' + str(os.getcwd()) + '"')
+            #print('isdir is false')
+            #print('copy ' + '"' + dirinmemory + '" ".\\' + str(os.getcwd()) + '"')
         maklist()
         command_selected = ''
     if(command_selected == 'cut'):
-        #cut
+        os.system('move ' + '"' + dirinmemory + '" "' + str(os.getcwd()) + '"')
+        print('move ' + '"' + dirinmemory + '" "' + str(os.getcwd()) + '"')
         maklist()
         command_selected = ''
     else:
         maklist()
-        pass
 
 def rightclicked(event):
     global optionsframe
